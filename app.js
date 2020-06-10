@@ -43,6 +43,8 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         //Toggle HTML with actice player
         document.querySelector('.player-0-panel').classList.toggle('active');
         document.querySelector('.player-1-panel').classList.toggle('active');
+        //Take away dice after 1 is rolled
+        document.querySelector('.dice').style.display = 'none';
     }
 });
 
