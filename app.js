@@ -18,3 +18,12 @@ activePlayer = 1;
 dice = Math.floor(Math.random() * 6) + 1;
 
 document.querySelector('#current-' + activePlayer).textContent = dice;
+
+
+function btn() {
+    //Do something here
+};
+
+document.querySelector('.btn-roll').addEventListener('click', function () {
+    //This is an anonymous function. it does not have a name and cannot be used outside of this querySelector.
+});
