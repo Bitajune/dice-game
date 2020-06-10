@@ -9,21 +9,22 @@ GAME RULES:
 
 */
 
-let scores, roundScore, activePlayer, dice;
+let scores, roundScore, activePlayer;
 
 scores = [0, 0];
 roundScore = 0;
 activePlayer = 1;
 
-dice = Math.floor(Math.random() * 6) + 1;
-
-document.querySelector('#current-' + activePlayer).textContent = dice;
-
-
-function btn() {
-    //Do something here
-};
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
     //This is an anonymous function. it does not have a name and cannot be used outside of this querySelector.
+    // 1. we need a random number
+    let dice = Math.floor(Math.random() * 6) + 1;
+    // 2. Display the result
+    let diceDOM = document.querySelector('.dice');
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';
+
+
+    // 3. Update the round score IF the rolled number was NOT a 1
 });
