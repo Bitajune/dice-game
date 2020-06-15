@@ -1,24 +1,27 @@
-let scores, roundScore, activePlayer;
+let scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
-    //This is an anonymous function. it does not have a name and cannot be used outside of this querySelector.
-    // 1. Get a random number
-    let dice = Math.floor(Math.random() * 6) + 1;
-    // 2. Display the result
-    let diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
-    // 3. Update the round score IF the rolled number was NOT a 1
-    if (dice !== 1) {
-        //Add score and switch player
-        roundScore += dice;
-        document.querySelector('#current-' + activePlayer).textContent = roundScore;
-    } else {
-        nextPlayer();
+    if (gamePlaying) {
+        //This is an anonymous function. it does not have a name and cannot be used outside of this querySelector.
+        // 1. Get a random number
+        let dice = Math.floor(Math.random() * 6) + 1;
+        // 2. Display the result
+        let diceDOM = document.querySelector('.dice');
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice + '.png';
+        // 3. Update the round score IF the rolled number was NOT a 1
+        if (dice !== 1) {
+            //Add score and switch player
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        } else {
+            nextPlayer();
+        }
     }
+
 });
 
 
@@ -33,6 +36,7 @@ document.querySelector('.btn-hold').addEventListener('click', function () {
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        gamePlaying = false;
     } else {
         nextPlayer();
     }
@@ -59,6 +63,7 @@ function init() {
     scores = [0, 0];
     roundScore = 0;
     activePlayer = 0;
+    gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
 
