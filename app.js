@@ -1,13 +1,7 @@
 let scores, roundScore, activePlayer;
 
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0;
+init();
 
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
     //This is an anonymous function. it does not have a name and cannot be used outside of this querySelector.
@@ -56,4 +50,20 @@ function nextPlayer() {
     document.querySelector('.player-1-panel').classList.toggle('active');
     //Take away dice after 1 is rolled
     document.querySelector('.dice').style.display = 'none';
+};
+
+document.querySelector('.btn-new').addEventListener('click', init);
+
+
+function init() {
+    scores = [0, 0];
+    roundScore = 0;
+    activePlayer = 0;
+
+    document.querySelector('.dice').style.display = 'none';
+
+    document.getElementById('score-0').textContent = '0';
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
 };
